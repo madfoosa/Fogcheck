@@ -13,31 +13,31 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap');
 
 :root {
-–bg: #0d1117;
-–bg-surface: #161b22;
-–bg-elevated: #1c2129;
-–text: #e8e6e0;
-–text-dim: #8b949e;
-–text-muted: #5a6068;
-–accent: #4a9b8e;
-–accent-dim: #3a7b6e;
-–clear: #2d6a4f;
-–managed: #e9a11a;
-–fog: #d4622a;
-–rest: #8b1a1a;
-–border: #21262d;
-–radius: 16px;
-–font-body: ‘DM Sans’, sans-serif;
-–font-display: ‘DM Serif Display’, serif;
+--bg: #0d1117;
+--bg-surface: #161b22;
+--bg-elevated: #1c2129;
+--text: #e8e6e0;
+--text-dim: #8b949e;
+--text-muted: #5a6068;
+--accent: #4a9b8e;
+--accent-dim: #3a7b6e;
+--clear: #2d6a4f;
+--managed: #e9a11a;
+--fog: #d4622a;
+--rest: #8b1a1a;
+--border: #21262d;
+--radius: 16px;
+--font-body: ‘DM Sans’, sans-serif;
+--font-display: ‘DM Serif Display’, serif;
 }
 
-- { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
 html, body {
 width: 100%; height: 100%;
-background: var(–bg);
-color: var(–text);
-font-family: var(–font-body);
+background: var(--bg);
+color: var(--text);
+font-family: var(--font-body);
 font-size: 16px;
 line-height: 1.5;
 overflow: hidden;
@@ -77,35 +77,35 @@ margin: 0 auto;
 width: 100%;
 }
 
-/* –– Typography –– */
-h1 { font-family: var(–font-display); font-size: 32px; font-weight: 400; line-height: 1.2; }
-h2 { font-family: var(–font-display); font-size: 24px; font-weight: 400; line-height: 1.3; }
+/* ---- Typography ---- */
+h1 { font-family: var(--font-display); font-size: 32px; font-weight: 400; line-height: 1.2; }
+h2 { font-family: var(--font-display); font-size: 24px; font-weight: 400; line-height: 1.3; }
 h3 { font-size: 18px; font-weight: 500; }
-.label { font-size: 13px; font-weight: 500; color: var(–text-dim); text-transform: uppercase; letter-spacing: 0.08em; }
-.big-score { font-family: var(–font-display); font-size: 72px; line-height: 1; }
-.day-type-label { font-family: var(–font-display); font-size: 48px; line-height: 1.1; }
+.label { font-size: 13px; font-weight: 500; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; }
+.big-score { font-family: var(--font-display); font-size: 72px; line-height: 1; }
+.day-type-label { font-family: var(--font-display); font-size: 48px; line-height: 1.1; }
 
-/* –– Buttons –– */
+/* ---- Buttons ---- */
 .btn {
 display: flex; align-items: center; justify-content: center;
 min-height: 60px; padding: 16px 24px;
-border-radius: var(–radius); border: none;
-font-family: var(–font-body); font-size: 18px; font-weight: 500;
+border-radius: var(--radius); border: none;
+font-family: var(--font-body); font-size: 18px; font-weight: 500;
 cursor: pointer; transition: all 150ms ease;
-text-decoration: none; color: var(–text);
+text-decoration: none; color: var(--text);
 }
 
 .btn-primary {
-background: var(–accent);
+background: var(--accent);
 color: #fff;
 }
-.btn-primary:active { background: var(–accent-dim); transform: scale(0.97); }
+.btn-primary:active { background: var(--accent-dim); transform: scale(0.97); }
 
 .btn-secondary {
-background: var(–bg-elevated);
-border: 1px solid var(–border);
+background: var(--bg-elevated);
+border: 1px solid var(--border);
 }
-.btn-secondary:active { background: var(–bg-surface); transform: scale(0.97); }
+.btn-secondary:active { background: var(--bg-surface); transform: scale(0.97); }
 
 .btn-large {
 min-height: 80px; font-size: 20px; font-weight: 700;
@@ -116,12 +116,12 @@ border-radius: 20px;
 width: 120px; height: 120px;
 border-radius: 60px;
 font-size: 24px; font-weight: 700;
-background: var(–accent);
+background: var(--accent);
 color: #fff;
 }
 .btn-huge:active { transform: scale(0.93); }
 
-/* –– Layout helpers –– */
+/* ---- Layout helpers ---- */
 .gap-8 { gap: 8px; }
 .gap-12 { gap: 12px; }
 .gap-16 { gap: 16px; }
@@ -141,52 +141,52 @@ color: #fff;
 .items-center { align-items: center; }
 .w-full { width: 100%; }
 
-/* –– Progress dots –– */
+/* ---- Progress dots ---- */
 .progress-dots {
 display: flex; gap: 8px; justify-content: center;
 padding: 16px 0 8px;
 }
 .progress-dot {
 width: 8px; height: 8px; border-radius: 4px;
-background: var(–border);
+background: var(--border);
 transition: background 200ms;
 }
-.progress-dot.done { background: var(–accent); }
-.progress-dot.current { background: var(–text); }
+.progress-dot.done { background: var(--accent); }
+.progress-dot.current { background: var(--text); }
 
-/* –– Cards –– */
+/* ---- Cards ---- */
 .card {
-background: var(–bg-surface);
-border-radius: var(–radius);
+background: var(--bg-surface);
+border-radius: var(--radius);
 padding: 20px;
-border: 1px solid var(–border);
+border: 1px solid var(--border);
 }
 
-/* –– Inputs –– */
+/* ---- Inputs ---- */
 textarea, input[type=“text”] {
 width: 100%; padding: 16px;
-background: var(–bg-elevated);
-border: 1px solid var(–border);
+background: var(--bg-elevated);
+border: 1px solid var(--border);
 border-radius: 12px;
-color: var(–text);
-font-family: var(–font-body);
+color: var(--text);
+font-family: var(--font-body);
 font-size: 16px;
 resize: none;
 outline: none;
 }
 textarea:focus, input[type=“text”]:focus {
-border-color: var(–accent);
+border-color: var(--accent);
 }
 
-/* –– Timer ring –– */
+/* ---- Timer ring ---- */
 .timer-display {
-font-family: var(–font-display);
+font-family: var(--font-display);
 font-size: 48px;
-color: var(–text);
+color: var(--text);
 text-align: center;
 }
 
-/* –– Test instruction –– */
+/* ---- Test instruction ---- */
 .test-instruction {
 font-size: 24px;
 text-align: center;
@@ -194,7 +194,7 @@ line-height: 1.4;
 padding: 0 8px;
 }
 
-/* –– Reaction time –– */
+/* ---- Reaction time ---- */
 .rt-screen {
 position: absolute;
 top: 0; left: 0; right: 0; bottom: 0;
@@ -210,7 +210,7 @@ position: absolute;
 cursor: pointer;
 }
 
-/* –– Memory shapes –– */
+/* ---- Memory shapes ---- */
 .shape-svg { width: 48px; height: 48px; }
 .shape-cell {
 width: 60px; height: 60px;
@@ -220,15 +220,15 @@ border: 2px solid transparent;
 cursor: pointer;
 transition: all 150ms;
 }
-.shape-cell.selected { border-color: var(–accent); background: rgba(74,155,142,0.15); }
+.shape-cell.selected { border-color: var(--accent); background: rgba(74,155,142,0.15); }
 .shape-cell.selected::after {
 content: ‘✓’; position: absolute;
-font-size: 14px; color: var(–accent);
+font-size: 14px; color: var(--accent);
 top: 2px; right: 6px;
 }
 .shape-cell { position: relative; }
 
-/* –– Attention grid –– */
+/* ---- Attention grid ---- */
 .attention-grid {
 display: grid;
 grid-template-columns: repeat(6, 1fr);
@@ -242,7 +242,7 @@ display: flex; align-items: center; justify-content: center;
 font-family: ‘Courier New’, monospace;
 font-size: 22px; font-weight: 700;
 border-radius: 8px;
-background: var(–bg-elevated);
+background: var(--bg-elevated);
 cursor: pointer;
 position: relative;
 min-height: 50px;
@@ -254,21 +254,21 @@ content: ‘✓’;
 position: absolute;
 top: 2px; right: 4px;
 font-size: 12px;
-color: var(–accent);
+color: var(--accent);
 }
 
-/* –– Self report –– */
+/* ---- Self report ---- */
 .sr-option {
 display: flex; align-items: center; justify-content: center;
 width: 60px; height: 60px;
 border-radius: 14px;
-border: 2px solid var(–border);
+border: 2px solid var(--border);
 font-size: 22px;
 cursor: pointer;
 transition: all 150ms;
 }
 .sr-option.selected {
-border-color: var(–accent);
+border-color: var(--accent);
 background: rgba(74,155,142,0.15);
 }
 .sr-options-row {
@@ -276,38 +276,38 @@ display: flex; gap: 8px; justify-content: center;
 flex-wrap: wrap;
 }
 
-/* –– Result reveal –– */
+/* ---- Result reveal ---- */
 .result-reveal { opacity: 0; transform: translateY(10px); transition: all 600ms ease; }
 .result-reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* –– Chart –– */
+/* ---- Chart ---- */
 canvas#trendChart {
 width: 100%; height: 200px;
 border-radius: 12px;
 }
 
-/* –– Day type bars –– */
+/* ---- Day type bars ---- */
 .day-bar {
 height: 8px; border-radius: 4px;
 transition: width 400ms ease;
 }
 
-/* –– Banner –– */
+/* ---- Banner ---- */
 .banner {
 position: fixed; bottom: 0; left: 0; right: 0;
 padding: 16px 20px;
-background: var(–bg-elevated);
-border-top: 1px solid var(–border);
-font-size: 14px; color: var(–text-dim);
+background: var(--bg-elevated);
+border-top: 1px solid var(--border);
+font-size: 14px; color: var(--text-dim);
 z-index: 100;
 display: flex; align-items: center; gap: 12px;
 }
 .banner-close {
-background: none; border: none; color: var(–text-dim);
+background: none; border: none; color: var(--text-dim);
 font-size: 20px; cursor: pointer; padding: 4px;
 }
 
-/* –– Scrollable content –– */
+/* ---- Scrollable content ---- */
 .scroll-content {
 flex: 1;
 overflow-y: auto;
@@ -315,7 +315,7 @@ overflow-y: auto;
 padding-bottom: 40px;
 }
 
-/* –– Nav bar –– */
+/* ---- Nav bar ---- */
 .nav-bar {
 display: flex; gap: 12px; padding: 12px 0;
 }
@@ -325,37 +325,37 @@ display: flex; flex-direction: column;
 align-items: center; gap: 4px;
 padding: 10px 8px;
 background: none; border: none;
-color: var(–text-dim);
-font-family: var(–font-body);
+color: var(--text-dim);
+font-family: var(--font-body);
 font-size: 12px;
 cursor: pointer;
 border-radius: 12px;
 transition: all 150ms;
 }
-.nav-btn.active { color: var(–accent); background: rgba(74,155,142,0.08); }
+.nav-btn.active { color: var(--accent); background: rgba(74,155,142,0.08); }
 .nav-icon { font-size: 22px; }
 
-/* –– Guidance card –– */
+/* ---- Guidance card ---- */
 .guidance-card {
 padding: 20px;
-border-radius: var(–radius);
+border-radius: var(--radius);
 border-left: 4px solid;
-background: var(–bg-surface);
+background: var(--bg-surface);
 font-size: 15px;
 line-height: 1.6;
 }
 
-/* –– Export area –– */
+/* ---- Export area ---- */
 .export-area {
 width: 100%;
 min-height: 200px;
-background: var(–bg-elevated);
-border: 1px solid var(–border);
+background: var(--bg-elevated);
+border: 1px solid var(--border);
 border-radius: 12px;
 padding: 16px;
 font-family: ‘Courier New’, monospace;
 font-size: 12px;
-color: var(–text-dim);
+color: var(--text-dim);
 white-space: pre-wrap;
 word-break: break-word;
 overflow-y: auto;
@@ -1600,7 +1600,7 @@ function drawDistribution(sessions) {
 const counts = { CLEAR: 0, MANAGED: 0, FOG: 0, REST: 0 };
 sessions.forEach(s => counts[s.dayType]++);
 const total = sessions.length || 1;
-const colors = { CLEAR: ‘var(–clear)’, MANAGED: ‘var(–managed)’, FOG: ‘var(–fog)’, REST: ‘var(–rest)’ };
+const colors = { CLEAR: ‘var(--clear)’, MANAGED: ‘var(--managed)’, FOG: ‘var(--fog)’, REST: ‘var(--rest)’ };
 const labels = { CLEAR: ‘Clear’, MANAGED: ‘Managed’, FOG: ‘Fog’, REST: ‘Rest’ };
 
 const el = document.getElementById(‘day-distribution’);
@@ -1653,7 +1653,7 @@ const today = new Date().toDateString();
 const lastDate = new Date(sessions[sessions.length - 1].date).toDateString();
 
 if (lastDate === today || lastDate === new Date(Date.now() - 86400000).toDateString()) {
-for (let i = sessions.length - 1; i > 0; i–) {
+for (let i = sessions.length - 1; i > 0; i--) {
 const d1 = new Date(sessions[i].date).toDateString();
 const d2 = new Date(sessions[i-1].date).toDateString();
 const diff = (new Date(d1) - new Date(d2)) / 86400000;
