@@ -27,8 +27,8 @@
 --rest: #8b1a1a;
 --border: #21262d;
 --radius: 16px;
---font-body: ‘DM Sans’, sans-serif;
---font-display: ‘DM Serif Display’, serif;
+--font-body: 'DM Sans', sans-serif;
+--font-display: 'DM Serif Display', serif;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -163,7 +163,7 @@ border: 1px solid var(--border);
 }
 
 /* ---- Inputs ---- */
-textarea, input[type=“text”] {
+textarea, input[type="text"] {
 width: 100%; padding: 16px;
 background: var(--bg-elevated);
 border: 1px solid var(--border);
@@ -174,7 +174,7 @@ font-size: 16px;
 resize: none;
 outline: none;
 }
-textarea:focus, input[type=“text”]:focus {
+textarea:focus, input[type="text"]:focus {
 border-color: var(--accent);
 }
 
@@ -222,7 +222,7 @@ transition: all 150ms;
 }
 .shape-cell.selected { border-color: var(--accent); background: rgba(74,155,142,0.15); }
 .shape-cell.selected::after {
-content: ‘✓’; position: absolute;
+content: '✓'; position: absolute;
 font-size: 14px; color: var(--accent);
 top: 2px; right: 6px;
 }
@@ -239,7 +239,7 @@ margin: 0 auto;
 .attention-cell {
 width: 100%; aspect-ratio: 1;
 display: flex; align-items: center; justify-content: center;
-font-family: ‘Courier New’, monospace;
+font-family: 'Courier New', monospace;
 font-size: 22px; font-weight: 700;
 border-radius: 8px;
 background: var(--bg-elevated);
@@ -250,7 +250,7 @@ transition: all 100ms;
 user-select: none;
 }
 .attention-cell.tapped::after {
-content: ‘✓’;
+content: '✓';
 position: absolute;
 top: 2px; right: 4px;
 font-size: 12px;
@@ -353,7 +353,7 @@ background: var(--bg-elevated);
 border: 1px solid var(--border);
 border-radius: 12px;
 padding: 16px;
-font-family: ‘Courier New’, monospace;
+font-family: 'Courier New', monospace;
 font-size: 12px;
 color: var(--text-dim);
 white-space: pre-wrap;
@@ -1477,14 +1477,14 @@ function startOnboarding() {
 window._onbNext = function() {
 const s = steps[step];
 if (s.input) {
-const val = document.getElementById(‘onb-input’).value.trim();
+const val = document.getElementById('onb-input').value.trim();
 if (val) APP.onboarding[s.key] = val;
 }
 step++;
 if (step >= steps.length) {
 APP.onboarding.completed = true;
 saveData(APP);
-showScreen(‘home’);
+showScreen('home');
 } else {
 renderStep();
 }
@@ -1493,10 +1493,10 @@ renderStep();
 window._onbSkip = function() {
 APP.onboarding.completed = true;
 saveData(APP);
-showScreen(‘home’);
+showScreen('home');
 };
 
-showScreen(‘onboarding’);
+showScreen('onboarding');
 renderStep();
 }
 
@@ -1505,12 +1505,12 @@ renderStep();
 // ============================================================
 function updateTrends() {
 if (APP.sessions.length === 0) {
-document.getElementById(‘trends-empty’).classList.remove(‘hidden’);
-document.getElementById(‘trends-content’).classList.add(‘hidden’);
+document.getElementById('trends-empty').classList.remove('hidden');
+document.getElementById('trends-content').classList.add('hidden');
 return;
 }
-document.getElementById(‘trends-empty’).classList.add(‘hidden’);
-document.getElementById(‘trends-content’).classList.remove(‘hidden’);
+document.getElementById('trends-empty').classList.add('hidden');
+document.getElementById('trends-content').classList.remove('hidden');
 
 // Last 30 days of sessions
 const now = Date.now();
@@ -1524,8 +1524,8 @@ drawStreak();
 }
 
 function drawChart(sessions) {
-const canvas = document.getElementById(‘trendChart’);
-const ctx = canvas.getContext(‘2d’);
+const canvas = document.getElementById('trendChart');
+const ctx = canvas.getContext('2d');
 const dpr = window.devicePixelRatio || 1;
 const rect = canvas.getBoundingClientRect();
 canvas.width = rect.width * dpr;
@@ -1534,16 +1534,16 @@ ctx.scale(dpr, dpr);
 const W = rect.width;
 const H = 200;
 
-ctx.fillStyle = ‘#161b22’;
+ctx.fillStyle = '#161b22';
 ctx.beginPath();
 ctx.roundRect(0, 0, W, H, 12);
 ctx.fill();
 
 if (sessions.length < 2) {
-ctx.fillStyle = ‘#5a6068’;
-ctx.font = ‘14px DM Sans, sans-serif’;
-ctx.textAlign = ‘center’;
-ctx.fillText(‘More data needed for chart’, W/2, H/2);
+ctx.fillStyle = '#5a6068';
+ctx.font = '14px DM Sans, sans-serif';
+ctx.textAlign = 'center';
+ctx.fillText('More data needed for chart', W/2, H/2);
 return;
 }
 
@@ -1555,7 +1555,7 @@ const minS = Math.min(…scores, 0);
 const xStep = (W - pad.left - pad.right) / (scores.length - 1);
 
 // Grid lines
-ctx.strokeStyle = ‘#21262d’;
+ctx.strokeStyle = '#21262d';
 ctx.lineWidth = 1;
 for (let v = 0; v <= 100; v += 25) {
 const y = pad.top + (1 - v / 100) * (H - pad.top - pad.bottom);
@@ -1563,17 +1563,17 @@ ctx.beginPath();
 ctx.moveTo(pad.left, y);
 ctx.lineTo(W - pad.right, y);
 ctx.stroke();
-ctx.fillStyle = ‘#5a6068’;
-ctx.font = ‘11px DM Sans, sans-serif’;
-ctx.textAlign = ‘right’;
+ctx.fillStyle = '#5a6068';
+ctx.font = '11px DM Sans, sans-serif';
+ctx.textAlign = 'right';
 ctx.fillText(v, pad.left - 6, y + 4);
 }
 
 // Line
 ctx.beginPath();
-ctx.strokeStyle = ‘#4a9b8e’;
+ctx.strokeStyle = '#4a9b8e';
 ctx.lineWidth = 2;
-ctx.lineJoin = ‘round’;
+ctx.lineJoin = 'round';
 scores.forEach((s, i) => {
 const x = pad.left + i * xStep;
 const y = pad.top + (1 - s / 100) * (H - pad.top - pad.bottom);
@@ -1583,13 +1583,13 @@ else ctx.lineTo(x, y);
 ctx.stroke();
 
 // Dots with day type colors
-const dayColors = { CLEAR: ‘#2d6a4f’, MANAGED: ‘#e9a11a’, FOG: ‘#d4622a’, REST: ‘#8b1a1a’ };
+const dayColors = { CLEAR: '#2d6a4f', MANAGED: '#e9a11a', FOG: '#d4622a', REST: '#8b1a1a' };
 sessions.forEach((s, i) => {
 const x = pad.left + i * xStep;
 const y = pad.top + (1 - s.scores.total / 100) * (H - pad.top - pad.bottom);
 ctx.beginPath();
 ctx.arc(x, y, 4, 0, Math.PI * 2);
-ctx.fillStyle = dayColors[s.dayType] || ‘#4a9b8e’;
+ctx.fillStyle = dayColors[s.dayType] || '#4a9b8e';
 ctx.fill();
 });
 }
@@ -1598,23 +1598,23 @@ function drawDistribution(sessions) {
 const counts = { CLEAR: 0, MANAGED: 0, FOG: 0, REST: 0 };
 sessions.forEach(s => counts[s.dayType]++);
 const total = sessions.length || 1;
-const colors = { CLEAR: ‘var(--clear)’, MANAGED: ‘var(--managed)’, FOG: ‘var(--fog)’, REST: ‘var(--rest)’ };
-const labels = { CLEAR: ‘Clear’, MANAGED: ‘Managed’, FOG: ‘Fog’, REST: ‘Rest’ };
+const colors = { CLEAR: 'var(--clear)', MANAGED: 'var(--managed)', FOG: 'var(--fog)', REST: 'var(--rest)' };
+const labels = { CLEAR: 'Clear', MANAGED: 'Managed', FOG: 'Fog', REST: 'Rest' };
 
-const el = document.getElementById(‘day-distribution’);
-el.innerHTML = Object.keys(counts).map(k => `<div style="display:flex;align-items:center;gap:12px"> <span style="width:70px;font-size:13px;color:var(--text-dim)">${labels[k]}: ${counts[k]}</span> <div style="flex:1;height:8px;background:var(--bg-elevated);border-radius:4px;overflow:hidden"> <div style="width:${(counts[k] / total) * 100}%;height:100%;background:${colors[k]};border-radius:4px;transition:width 400ms"></div> </div> </div>`).join(’’);
+const el = document.getElementById('day-distribution');
+el.innerHTML = Object.keys(counts).map(k => `<div style="display:flex;align-items:center;gap:12px"> <span style="width:70px;font-size:13px;color:var(--text-dim)">${labels[k]}: ${counts[k]}</span> <div style="flex:1;height:8px;background:var(--bg-elevated);border-radius:4px;overflow:hidden"> <div style="width:${(counts[k] / total) * 100}%;height:100%;background:${colors[k]};border-radius:4px;transition:width 400ms"></div> </div> </div>`).join('');
 }
 
 function drawInsights(sessions) {
-const el = document.getElementById(‘trends-insights’);
+const el = document.getElementById('trends-insights');
 if (sessions.length < 3) {
-el.innerHTML = ‘<p style="color:var(--text-dim);font-size:14px">Need more data for insights.</p>’;
+el.innerHTML = '<p style="color:var(--text-dim);font-size:14px">Need more data for insights.</p>';
 return;
 }
 
 // Pain correlation
 const withPain = sessions.filter(s => s.symptoms && s.symptoms.pain);
-let insight = ‘’;
+let insight = '';
 if (withPain.length >= 3) {
 const highPain = withPain.filter(s => s.symptoms.pain >= 4);
 const lowPain = withPain.filter(s => s.symptoms.pain <= 2);
@@ -1625,23 +1625,23 @@ const diff = Math.round(avgLow - avgHigh);
 if (diff > 5) {
 insight = `High pain days score ~${diff} points lower on average. Pain and cognition appear linked for you.`;
 } else {
-insight = ‘Pain levels don't show a strong correlation with cognitive scores yet.’;
+insight = 'Pain levels don't show a strong correlation with cognitive scores yet.';
 }
 } else {
-insight = ‘Not enough variation in pain levels to detect patterns yet.’;
+insight = 'Not enough variation in pain levels to detect patterns yet.';
 }
 } else {
-insight = ‘Collecting more data to find patterns.’;
+insight = 'Collecting more data to find patterns.';
 }
 
 el.innerHTML = `<p style="font-size:14px;line-height:1.6">${insight}</p>`;
 }
 
 function drawStreak() {
-const el = document.getElementById(‘trends-streak’);
+const el = document.getElementById('trends-streak');
 const sessions = APP.sessions;
 if (sessions.length === 0) {
-el.innerHTML = ‘<p style="font-size:14px;color:var(--text-dim)">No sessions yet.</p>’;
+el.innerHTML = '<p style="font-size:14px;color:var(--text-dim)">No sessions yet.</p>';
 return;
 }
 
@@ -1663,7 +1663,7 @@ else break;
 streak = 0;
 }
 
-el.innerHTML = `<p style="font-size:14px">${streak > 0 ? `You’ve logged <strong>${streak}</strong> day${streak !== 1 ? ‘s’ : ‘’} in a row.` : 'Log today to start a streak.'}</p>`;
+el.innerHTML = `<p style="font-size:14px">${streak > 0 ? `You've logged <strong>${streak}</strong> day${streak !== 1 ? 's' : ''} in a row.` : 'Log today to start a streak.'}</p>`;
 }
 
 // ============================================================
@@ -1680,7 +1680,7 @@ text += `ASSESSMENT HISTORY:\n`;
 
 sessions.forEach(s => {
 const d = new Date(s.date).toLocaleDateString();
-const bl = s.scores.percentageOfBaseline ? ` | Baseline: ${s.scores.percentageOfBaseline}%` : ‘’;
+const bl = s.scores.percentageOfBaseline ? ` | Baseline: ${s.scores.percentageOfBaseline}%` : '';
 text += `${d} | ${s.dayType} | Score: ${s.scores.total}${bl}\n`;
 });
 
@@ -1701,27 +1701,27 @@ text += `${new Date(s.date).toLocaleDateString()}: ${s.note}\n`;
 });
 }
 
-document.getElementById(‘export-text’).textContent = text;
-showScreen(‘export’);
+document.getElementById('export-text').textContent = text;
+showScreen('export');
 }
 
 function copyExport() {
-const text = document.getElementById(‘export-text’).textContent;
+const text = document.getElementById('export-text').textContent;
 navigator.clipboard.writeText(text).then(() => {
-const confirm = document.getElementById(‘copy-confirm’);
-confirm.classList.remove(‘hidden’);
-setTimeout(() => confirm.classList.add(‘hidden’), 2000);
+const confirm = document.getElementById('copy-confirm');
+confirm.classList.remove('hidden');
+setTimeout(() => confirm.classList.add('hidden'), 2000);
 }).catch(() => {
 // Fallback
-const ta = document.createElement(‘textarea’);
+const ta = document.createElement('textarea');
 ta.value = text;
 document.body.appendChild(ta);
 ta.select();
-document.execCommand(‘copy’);
+document.execCommand('copy');
 document.body.removeChild(ta);
-const confirm = document.getElementById(‘copy-confirm’);
-confirm.classList.remove(‘hidden’);
-setTimeout(() => confirm.classList.add(‘hidden’), 2000);
+const confirm = document.getElementById('copy-confirm');
+confirm.classList.remove('hidden');
+setTimeout(() => confirm.classList.add('hidden'), 2000);
 });
 }
 
@@ -1729,11 +1729,11 @@ setTimeout(() => confirm.classList.add(‘hidden’), 2000);
 // SETTINGS
 // ============================================================
 function updateSettings() {
-document.getElementById(‘settings-name’).value = APP.settings.userName || ‘’;
-document.getElementById(‘settings-clear’).value = APP.onboarding.guidance_clear_leadership || ‘’;
-document.getElementById(‘settings-fog’).value = APP.onboarding.guidance_fog_warning || ‘’;
-document.getElementById(‘settings-rest’).value = APP.onboarding.guidance_rest_contact || ‘’;
-document.getElementById(‘settings-custom’).value = APP.onboarding.guidance_custom_tracking || ‘’;
+document.getElementById('settings-name').value = APP.settings.userName || '';
+document.getElementById('settings-clear').value = APP.onboarding.guidance_clear_leadership || '';
+document.getElementById('settings-fog').value = APP.onboarding.guidance_fog_warning || '';
+document.getElementById('settings-rest').value = APP.onboarding.guidance_rest_contact || '';
+document.getElementById('settings-custom').value = APP.onboarding.guidance_custom_tracking || '';
 }
 
 function saveSetting(key, value) {
@@ -1747,11 +1747,11 @@ saveData(APP);
 }
 
 function confirmClearData() {
-if (confirm(‘This will delete ALL your FogCheck data permanently. Are you sure?’)) {
-if (confirm(‘Really? This cannot be undone.’)) {
+if (confirm('This will delete ALL your FogCheck data permanently. Are you sure?')) {
+if (confirm('Really? This cannot be undone.')) {
 APP = JSON.parse(JSON.stringify(DEFAULT_DATA));
 saveData(APP);
-showScreen(‘home’);
+showScreen('home');
 }
 }
 }
@@ -1761,14 +1761,14 @@ showScreen(‘home’);
 // ============================================================
 function checkInstallBanner() {
 if (APP.installBannerDismissed) return;
-const isStandalone = window.navigator.standalone || window.matchMedia(’(display-mode: standalone)’).matches;
+const isStandalone = window.navigator.standalone || window.matchMedia('(display-mode: standalone)').matches;
 if (!isStandalone) {
-document.getElementById(‘install-banner’).classList.remove(‘hidden’);
+document.getElementById('install-banner').classList.remove('hidden');
 }
 }
 
 function dismissBanner() {
-document.getElementById(‘install-banner’).classList.add(‘hidden’);
+document.getElementById('install-banner').classList.add('hidden');
 APP.installBannerDismissed = true;
 saveData(APP);
 }
@@ -1777,9 +1777,9 @@ saveData(APP);
 // PWA — SERVICE WORKER
 // ============================================================
 function registerSW() {
-if (‘serviceWorker’ in navigator) {
+if ('serviceWorker' in navigator) {
 const swCode = `const CACHE = 'fogcheck-v1'; self.addEventListener('install', e => { e.waitUntil( caches.open(CACHE).then(cache => cache.addAll(['/'])) ); self.skipWaiting(); }); self.addEventListener('fetch', e => { e.respondWith( caches.match(e.request).then(r => r || fetch(e.request).catch(() => caches.match('/'))) ); }); self.addEventListener('activate', e => { e.waitUntil( caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))) ); self.clients.claim(); });`;
-const blob = new Blob([swCode], { type: ‘application/javascript’ });
+const blob = new Blob([swCode], { type: 'application/javascript' });
 const swUrl = URL.createObjectURL(blob);
 navigator.serviceWorker.register(swUrl).catch(() => {});
 }
@@ -1790,27 +1790,27 @@ navigator.serviceWorker.register(swUrl).catch(() => {});
 // ============================================================
 function injectManifest() {
 const manifest = {
-name: ‘FogCheck’,
-short_name: ‘FogCheck’,
-start_url: ‘.’,
-display: ‘standalone’,
-background_color: ‘#0d1117’,
-theme_color: ‘#0d1117’,
+name: 'FogCheck',
+short_name: 'FogCheck',
+start_url: '.',
+display: 'standalone',
+background_color: '#0d1117',
+theme_color: '#0d1117',
 icons: [{
-src: ‘data:image/svg+xml,’ + encodeURIComponent(’<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="128" fill="#0d1117"/><circle cx="256" cy="240" r="100" fill="none" stroke="#4a9b8e" stroke-width="16"/><path d="M256 140v100l60 60" fill="none" stroke="#4a9b8e" stroke-width="16" stroke-linecap="round"/><rect x="176" y="380" width="160" height="16" rx="8" fill="#4a9b8e" opacity="0.5"/><rect x="206" y="410" width="100" height="12" rx="6" fill="#4a9b8e" opacity="0.3"/></svg>’),
-sizes: ‘512x512’,
-type: ‘image/svg+xml’
+src: 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="128" fill="#0d1117"/><circle cx="256" cy="240" r="100" fill="none" stroke="#4a9b8e" stroke-width="16"/><path d="M256 140v100l60 60" fill="none" stroke="#4a9b8e" stroke-width="16" stroke-linecap="round"/><rect x="176" y="380" width="160" height="16" rx="8" fill="#4a9b8e" opacity="0.5"/><rect x="206" y="410" width="100" height="12" rx="6" fill="#4a9b8e" opacity="0.3"/></svg>'),
+sizes: '512x512',
+type: 'image/svg+xml'
 }]
 };
-const link = document.createElement(‘link’);
-link.rel = ‘manifest’;
-link.href = ‘data:application/json,’ + encodeURIComponent(JSON.stringify(manifest));
+const link = document.createElement('link');
+link.rel = 'manifest';
+link.href = 'data:application/json,' + encodeURIComponent(JSON.stringify(manifest));
 document.head.appendChild(link);
 
 // iOS icon
-const appleIcon = document.createElement(‘link’);
-appleIcon.rel = ‘apple-touch-icon’;
-appleIcon.href = ‘data:image/svg+xml,’ + encodeURIComponent(’<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="128" fill="#0d1117"/><circle cx="256" cy="240" r="100" fill="none" stroke="#4a9b8e" stroke-width="16"/><path d="M256 140v100l60 60" fill="none" stroke="#4a9b8e" stroke-width="16" stroke-linecap="round"/></svg>’);
+const appleIcon = document.createElement('link');
+appleIcon.rel = 'apple-touch-icon';
+appleIcon.href = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="128" fill="#0d1117"/><circle cx="256" cy="240" r="100" fill="none" stroke="#4a9b8e" stroke-width="16"/><path d="M256 140v100l60 60" fill="none" stroke="#4a9b8e" stroke-width="16" stroke-linecap="round"/></svg>');
 document.head.appendChild(appleIcon);
 }
 
@@ -1820,7 +1820,7 @@ document.head.appendChild(appleIcon);
 function init() {
 storageAvailable = testStorage();
 if (!storageAvailable) {
-document.getElementById(‘storage-banner’).classList.remove(‘hidden’);
+document.getElementById('storage-banner').classList.remove('hidden');
 }
 
 APP = loadData();
@@ -1833,7 +1833,7 @@ checkInstallBanner();
 // roundRect polyfill for older Safari
 if (!CanvasRenderingContext2D.prototype.roundRect) {
 CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
-if (typeof r === ‘number’) r = [r, r, r, r];
+if (typeof r === 'number') r = [r, r, r, r];
 this.moveTo(x + r[0], y);
 this.lineTo(x + w - r[1], y);
 this.quadraticCurveTo(x + w, y, x + w, y + r[1]);
