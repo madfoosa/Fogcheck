@@ -1464,15 +1464,13 @@ function startOnboarding() {
         <p class="label">Getting set up · ${step + 1} of ${steps.length}</p>
         <p style="font-size:20px;line-height:1.6;max-width:360px">${s.text}</p>
         ${s.input ? `<textarea id="onb-input" rows="3" placeholder="${s.optional ? 'Optional…' : 'Type here…'}" style="max-width:360px"></textarea>` : ''}
-
-```
+        
     <div style="display:flex;gap:12px">
       <button class="btn btn-primary" onclick="window._onbNext()">${step === steps.length - 1 ? 'Finish' : 'Next'}</button>
       <button class="btn btn-secondary" onclick="window._onbSkip()" style="font-size:14px">Skip all</button>
     </div>
   </div>
-`;
-```
+\`;
 
 }
 
