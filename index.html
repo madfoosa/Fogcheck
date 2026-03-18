@@ -426,7 +426,7 @@ overflow-y: auto;
   </div>
   <div class="result-reveal mt-24" id="res-note-section">
     <p class="label mb-16">Add a note about today</p>
-    <textarea id="res-note" rows="3" placeholder="e.g. Took new medication, stressful morning, slept poorly…"></textarea>
+    <textarea id="res-note" rows="3" placeholder="e.g. Took new medication, stressful morning, slept poorly..."></textarea>
     <button class="btn btn-secondary w-full mt-16" onclick="saveNoteAndFinish()">Save &amp; Finish</button>
   </div>
   <div class="result-reveal mt-16 mb-24" id="res-done-btn">
@@ -510,19 +510,19 @@ overflow-y: auto;
     </div>
     <div>
       <p class="label mb-16">Clear day guidance</p>
-      <textarea id="settings-clear" rows="3" placeholder="What to remember on clear days…" oninput="saveGuidance('guidance_clear_leadership', this.value)"></textarea>
+      <textarea id="settings-clear" rows="3" placeholder="What to remember on clear days..." oninput="saveGuidance('guidance_clear_leadership', this.value)"></textarea>
     </div>
     <div>
       <p class="label mb-16">Fog day warning</p>
-      <textarea id="settings-fog" rows="3" placeholder="What to protect yourself from on fog days…" oninput="saveGuidance('guidance_fog_warning', this.value)"></textarea>
+      <textarea id="settings-fog" rows="3" placeholder="What to protect yourself from on fog days..." oninput="saveGuidance('guidance_fog_warning', this.value)"></textarea>
     </div>
     <div>
       <p class="label mb-16">Rest day contact</p>
-      <textarea id="settings-rest" rows="2" placeholder="Who should know when you need rest…" oninput="saveGuidance('guidance_rest_contact', this.value)"></textarea>
+      <textarea id="settings-rest" rows="2" placeholder="Who should know when you need rest..." oninput="saveGuidance('guidance_rest_contact', this.value)"></textarea>
     </div>
     <div>
       <p class="label mb-16">Custom tracking notes</p>
-      <textarea id="settings-custom" rows="2" placeholder="Medications, specific symptoms…" oninput="saveGuidance('guidance_custom_tracking', this.value)"></textarea>
+      <textarea id="settings-custom" rows="2" placeholder="Medications, specific symptoms..." oninput="saveGuidance('guidance_custom_tracking', this.value)"></textarea>
     </div>
     <div class="card" style="border-color: var(--rest);">
       <p style="font-size:14px;color:var(--text-dim);margin-bottom:12px">Danger zone</p>
@@ -814,7 +814,7 @@ function runReactionTime(container) {
     const wrapper = document.getElementById('rt-wrapper');
     wrapper.innerHTML = `
       <div style="position:absolute;top:0;left:0;right:0;bottom:0;background:#000;border-radius:16px;display:flex;align-items:center;justify-content:center" id="rt-area">
-        <p id="rt-ready" style="color:#555;font-size:20px">Get ready…</p>
+        <p id="rt-ready" style="color:#555;font-size:20px">Get ready...</p>
       </div>
     `;
 
@@ -826,7 +826,7 @@ function runReactionTime(container) {
       if (!circleShown && waitingForCircle) {
         // too early
         clearTimeout(timeoutId);
-        document.getElementById('rt-ready').textContent = 'Too early! Wait for the circle…';
+        document.getElementById('rt-ready').textContent = 'Too early! Wait for the circle...';
         document.getElementById('rt-ready').style.color = '#d4622a';
         waitingForCircle = false;
         setTimeout(() => {
@@ -1463,14 +1463,14 @@ function startOnboarding() {
       <div class="flex-col items-center justify-center gap-24 text-center" style="padding:24px 0">
         <p class="label">Getting set up · ${step + 1} of ${steps.length}</p>
         <p style="font-size:20px;line-height:1.6;max-width:360px">${s.text}</p>
-        ${s.input ? `<textarea id="onb-input" rows="3" placeholder="${s.optional ? 'Optional…' : 'Type here…'}" style="max-width:360px"></textarea>` : ''}
+        ${s.input ? `<textarea id="onb-input" rows="3" placeholder="${s.optional ? 'Optional...' : 'Type here...'}" style="max-width:360px"></textarea>` : ''}
         
     <div style="display:flex;gap:12px">
       <button class="btn btn-primary" onclick="window._onbNext()">${step === steps.length - 1 ? 'Finish' : 'Next'}</button>
       <button class="btn btn-secondary" onclick="window._onbSkip()" style="font-size:14px">Skip all</button>
     </div>
   </div>
-\`;
+`;
 
 }
 
@@ -1549,8 +1549,8 @@ return;
 
 const pad = { top: 20, right: 16, bottom: 30, left: 40 };
 const scores = sessions.map(s => s.scores.total);
-const maxS = Math.max(…scores, 100);
-const minS = Math.min(…scores, 0);
+const maxS = Math.max(...scores, 100);
+const minS = Math.min(...scores, 0);
 
 const xStep = (W - pad.left - pad.right) / (scores.length - 1);
 
@@ -1625,7 +1625,7 @@ const diff = Math.round(avgLow - avgHigh);
 if (diff > 5) {
 insight = `High pain days score ~${diff} points lower on average. Pain and cognition appear linked for you.`;
 } else {
-insight = 'Pain levels don't show a strong correlation with cognitive scores yet.';
+insight = "Pain levels don't show a strong correlation with cognitive scores yet.";
 }
 } else {
 insight = 'Not enough variation in pain levels to detect patterns yet.';
