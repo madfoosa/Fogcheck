@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -13,68 +12,68 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap');
 
 :root {
---bg: #0d1117;
---bg-surface: #161b22;
---bg-elevated: #1c2129;
---text: #e8e6e0;
---text-dim: #8b949e;
---text-muted: #5a6068;
---accent: #4a9b8e;
---accent-dim: #3a7b6e;
---clear: #2d6a4f;
---managed: #e9a11a;
---fog: #d4622a;
---rest: #8b1a1a;
---border: #21262d;
---radius: 16px;
---font-body: 'DM Sans', sans-serif;
---font-display: 'DM Serif Display', serif;
+  --bg: #0d1117;
+  --bg-surface: #161b22;
+  --bg-elevated: #1c2129;
+  --text: #e8e6e0;
+  --text-dim: #8b949e;
+  --text-muted: #5a6068;
+  --accent: #4a9b8e;
+  --accent-dim: #3a7b6e;
+  --clear: #2d6a4f;
+  --managed: #e9a11a;
+  --fog: #d4622a;
+  --rest: #8b1a1a;
+  --border: #21262d;
+  --radius: 16px;
+  --font-body: 'DM Sans', sans-serif;
+  --font-display: 'DM Serif Display', serif;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
 html, body {
-width: 100%; height: 100%;
-background: var(--bg);
-color: var(--text);
-font-family: var(--font-body);
-font-size: 16px;
-line-height: 1.5;
-overflow: hidden;
--webkit-font-smoothing: antialiased;
+  width: 100%; height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
 #app {
-width: 100%; height: 100%;
-position: relative;
-overflow: hidden;
+  width: 100%; height: 100%;
+  position: relative;
+  overflow: hidden;
 }
 
 .screen {
-position: absolute;
-top: 0; left: 0; right: 0; bottom: 0;
-display: flex;
-flex-direction: column;
-opacity: 0;
-pointer-events: none;
-transition: opacity 200ms ease;
-overflow-y: auto;
--webkit-overflow-scrolling: touch;
-padding: env(safe-area-inset-top) 20px env(safe-area-inset-bottom) 20px;
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: env(safe-area-inset-top) 20px env(safe-area-inset-bottom) 20px;
 }
 
 .screen.active {
-opacity: 1;
-pointer-events: auto;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .screen-inner {
-flex: 1;
-display: flex;
-flex-direction: column;
-max-width: 440px;
-margin: 0 auto;
-width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 440px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 /* ---- Typography ---- */
@@ -87,37 +86,37 @@ h3 { font-size: 18px; font-weight: 500; }
 
 /* ---- Buttons ---- */
 .btn {
-display: flex; align-items: center; justify-content: center;
-min-height: 60px; padding: 16px 24px;
-border-radius: var(--radius); border: none;
-font-family: var(--font-body); font-size: 18px; font-weight: 500;
-cursor: pointer; transition: all 150ms ease;
-text-decoration: none; color: var(--text);
+  display: flex; align-items: center; justify-content: center;
+  min-height: 60px; padding: 16px 24px;
+  border-radius: var(--radius); border: none;
+  font-family: var(--font-body); font-size: 18px; font-weight: 500;
+  cursor: pointer; transition: all 150ms ease;
+  text-decoration: none; color: var(--text);
 }
 
 .btn-primary {
-background: var(--accent);
-color: #fff;
+  background: var(--accent);
+  color: #fff;
 }
 .btn-primary:active { background: var(--accent-dim); transform: scale(0.97); }
 
 .btn-secondary {
-background: var(--bg-elevated);
-border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
 }
 .btn-secondary:active { background: var(--bg-surface); transform: scale(0.97); }
 
 .btn-large {
-min-height: 80px; font-size: 20px; font-weight: 700;
-border-radius: 20px;
+  min-height: 80px; font-size: 20px; font-weight: 700;
+  border-radius: 20px;
 }
 
 .btn-huge {
-width: 120px; height: 120px;
-border-radius: 60px;
-font-size: 24px; font-weight: 700;
-background: var(--accent);
-color: #fff;
+  width: 120px; height: 120px;
+  border-radius: 60px;
+  font-size: 24px; font-weight: 700;
+  background: var(--accent);
+  color: #fff;
 }
 .btn-huge:active { transform: scale(0.93); }
 
@@ -143,137 +142,137 @@ color: #fff;
 
 /* ---- Progress dots ---- */
 .progress-dots {
-display: flex; gap: 8px; justify-content: center;
-padding: 16px 0 8px;
+  display: flex; gap: 8px; justify-content: center;
+  padding: 16px 0 8px;
 }
 .progress-dot {
-width: 8px; height: 8px; border-radius: 4px;
-background: var(--border);
-transition: background 200ms;
+  width: 8px; height: 8px; border-radius: 4px;
+  background: var(--border);
+  transition: background 200ms;
 }
 .progress-dot.done { background: var(--accent); }
 .progress-dot.current { background: var(--text); }
 
 /* ---- Cards ---- */
 .card {
-background: var(--bg-surface);
-border-radius: var(--radius);
-padding: 20px;
-border: 1px solid var(--border);
+  background: var(--bg-surface);
+  border-radius: var(--radius);
+  padding: 20px;
+  border: 1px solid var(--border);
 }
 
 /* ---- Inputs ---- */
 textarea, input[type="text"] {
-width: 100%; padding: 16px;
-background: var(--bg-elevated);
-border: 1px solid var(--border);
-border-radius: 12px;
-color: var(--text);
-font-family: var(--font-body);
-font-size: 16px;
-resize: none;
-outline: none;
+  width: 100%; padding: 16px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  resize: none;
+  outline: none;
 }
 textarea:focus, input[type="text"]:focus {
-border-color: var(--accent);
+  border-color: var(--accent);
 }
 
 /* ---- Timer ring ---- */
 .timer-display {
-font-family: var(--font-display);
-font-size: 48px;
-color: var(--text);
-text-align: center;
+  font-family: var(--font-display);
+  font-size: 48px;
+  color: var(--text);
+  text-align: center;
 }
 
 /* ---- Test instruction ---- */
 .test-instruction {
-font-size: 24px;
-text-align: center;
-line-height: 1.4;
-padding: 0 8px;
+  font-size: 24px;
+  text-align: center;
+  line-height: 1.4;
+  padding: 0 8px;
 }
 
 /* ---- Reaction time ---- */
 .rt-screen {
-position: absolute;
-top: 0; left: 0; right: 0; bottom: 0;
-background: #000;
-display: flex;
-align-items: center;
-justify-content: center;
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .rt-circle {
-width: 80px; height: 80px;
-border-radius: 40px;
-position: absolute;
-cursor: pointer;
+  width: 80px; height: 80px;
+  border-radius: 40px;
+  position: absolute;
+  cursor: pointer;
 }
 
 /* ---- Memory shapes ---- */
 .shape-svg { width: 48px; height: 48px; }
 .shape-cell {
-width: 60px; height: 60px;
-display: flex; align-items: center; justify-content: center;
-border-radius: 12px;
-border: 2px solid transparent;
-cursor: pointer;
-transition: all 150ms;
+  width: 60px; height: 60px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 150ms;
 }
 .shape-cell.selected { border-color: var(--accent); background: rgba(74,155,142,0.15); }
 .shape-cell.selected::after {
-content: '✓'; position: absolute;
-font-size: 14px; color: var(--accent);
-top: 2px; right: 6px;
+  content: '✓'; position: absolute;
+  font-size: 14px; color: var(--accent);
+  top: 2px; right: 6px;
 }
 .shape-cell { position: relative; }
 
 /* ---- Attention grid ---- */
 .attention-grid {
-display: grid;
-grid-template-columns: repeat(6, 1fr);
-gap: 4px;
-max-width: 360px;
-margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 4px;
+  max-width: 360px;
+  margin: 0 auto;
 }
 .attention-cell {
-width: 100%; aspect-ratio: 1;
-display: flex; align-items: center; justify-content: center;
-font-family: 'Courier New', monospace;
-font-size: 22px; font-weight: 700;
-border-radius: 8px;
-background: var(--bg-elevated);
-cursor: pointer;
-position: relative;
-min-height: 50px;
-transition: all 100ms;
-user-select: none;
+  width: 100%; aspect-ratio: 1;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Courier New', monospace;
+  font-size: 22px; font-weight: 700;
+  border-radius: 8px;
+  background: var(--bg-elevated);
+  cursor: pointer;
+  position: relative;
+  min-height: 50px;
+  transition: all 100ms;
+  user-select: none;
 }
 .attention-cell.tapped::after {
-content: '✓';
-position: absolute;
-top: 2px; right: 4px;
-font-size: 12px;
-color: var(--accent);
+  content: '✓';
+  position: absolute;
+  top: 2px; right: 4px;
+  font-size: 12px;
+  color: var(--accent);
 }
 
 /* ---- Self report ---- */
 .sr-option {
-display: flex; align-items: center; justify-content: center;
-width: 60px; height: 60px;
-border-radius: 14px;
-border: 2px solid var(--border);
-font-size: 22px;
-cursor: pointer;
-transition: all 150ms;
+  display: flex; align-items: center; justify-content: center;
+  width: 60px; height: 60px;
+  border-radius: 14px;
+  border: 2px solid var(--border);
+  font-size: 22px;
+  cursor: pointer;
+  transition: all 150ms;
 }
 .sr-option.selected {
-border-color: var(--accent);
-background: rgba(74,155,142,0.15);
+  border-color: var(--accent);
+  background: rgba(74,155,142,0.15);
 }
 .sr-options-row {
-display: flex; gap: 8px; justify-content: center;
-flex-wrap: wrap;
+  display: flex; gap: 8px; justify-content: center;
+  flex-wrap: wrap;
 }
 
 /* ---- Result reveal ---- */
@@ -282,94 +281,92 @@ flex-wrap: wrap;
 
 /* ---- Chart ---- */
 canvas#trendChart {
-width: 100%; height: 200px;
-border-radius: 12px;
+  width: 100%; height: 200px;
+  border-radius: 12px;
 }
 
 /* ---- Day type bars ---- */
 .day-bar {
-height: 8px; border-radius: 4px;
-transition: width 400ms ease;
+  height: 8px; border-radius: 4px;
+  transition: width 400ms ease;
 }
 
 /* ---- Banner ---- */
 .banner {
-position: fixed; bottom: 0; left: 0; right: 0;
-padding: 16px 20px;
-background: var(--bg-elevated);
-border-top: 1px solid var(--border);
-font-size: 14px; color: var(--text-dim);
-z-index: 100;
-display: flex; align-items: center; gap: 12px;
+  position: fixed; bottom: 0; left: 0; right: 0;
+  padding: 16px 20px;
+  background: var(--bg-elevated);
+  border-top: 1px solid var(--border);
+  font-size: 14px; color: var(--text-dim);
+  z-index: 100;
+  display: flex; align-items: center; gap: 12px;
 }
 .banner-close {
-background: none; border: none; color: var(--text-dim);
-font-size: 20px; cursor: pointer; padding: 4px;
+  background: none; border: none; color: var(--text-dim);
+  font-size: 20px; cursor: pointer; padding: 4px;
 }
 
 /* ---- Scrollable content ---- */
 .scroll-content {
-flex: 1;
-overflow-y: auto;
--webkit-overflow-scrolling: touch;
-padding-bottom: 40px;
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 40px;
 }
 
 /* ---- Nav bar ---- */
 .nav-bar {
-display: flex; gap: 12px; padding: 12px 0;
+  display: flex; gap: 12px; padding: 12px 0;
 }
 .nav-btn {
-flex: 1;
-display: flex; flex-direction: column;
-align-items: center; gap: 4px;
-padding: 10px 8px;
-background: none; border: none;
-color: var(--text-dim);
-font-family: var(--font-body);
-font-size: 12px;
-cursor: pointer;
-border-radius: 12px;
-transition: all 150ms;
+  flex: 1;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 4px;
+  padding: 10px 8px;
+  background: none; border: none;
+  color: var(--text-dim);
+  font-family: var(--font-body);
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 150ms;
 }
 .nav-btn.active { color: var(--accent); background: rgba(74,155,142,0.08); }
 .nav-icon { font-size: 22px; }
 
 /* ---- Guidance card ---- */
 .guidance-card {
-padding: 20px;
-border-radius: var(--radius);
-border-left: 4px solid;
-background: var(--bg-surface);
-font-size: 15px;
-line-height: 1.6;
+  padding: 20px;
+  border-radius: var(--radius);
+  border-left: 4px solid;
+  background: var(--bg-surface);
+  font-size: 15px;
+  line-height: 1.6;
 }
 
 /* ---- Export area ---- */
 .export-area {
-width: 100%;
-min-height: 200px;
-background: var(--bg-elevated);
-border: 1px solid var(--border);
-border-radius: 12px;
-padding: 16px;
-font-family: 'Courier New', monospace;
-font-size: 12px;
-color: var(--text-dim);
-white-space: pre-wrap;
-word-break: break-word;
-overflow-y: auto;
+  width: 100%;
+  min-height: 200px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: var(--text-dim);
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-y: auto;
 }
 
 .hidden { display: none !important; }
 </style>
-
 </head>
 <body>
 <div id="app">
 
 <!-- ====== HOME SCREEN ====== -->
-
 <div class="screen active" id="screen-home">
 <div class="screen-inner">
   <div style="padding-top:24px">
@@ -396,7 +393,6 @@ overflow-y: auto;
 </div>
 
 <!-- ====== TEST CONTAINER ====== -->
-
 <div class="screen" id="screen-test">
 <div class="screen-inner">
   <div class="progress-dots" id="test-progress"></div>
@@ -405,7 +401,6 @@ overflow-y: auto;
 </div>
 
 <!-- ====== RESULT SCREEN ====== -->
-
 <div class="screen" id="screen-result">
 <div class="screen-inner scroll-content">
   <div style="padding-top:32px" class="text-center">
@@ -439,7 +434,6 @@ overflow-y: auto;
 </div>
 
 <!-- ====== TRENDS SCREEN ====== -->
-
 <div class="screen" id="screen-trends">
 <div class="screen-inner scroll-content">
   <div style="padding-top:24px">
@@ -479,7 +473,6 @@ overflow-y: auto;
 </div>
 
 <!-- ====== EXPORT SCREEN ====== -->
-
 <div class="screen" id="screen-export">
 <div class="screen-inner scroll-content">
   <div style="padding-top:24px">
@@ -497,7 +490,6 @@ overflow-y: auto;
 </div>
 
 <!-- ====== SETTINGS SCREEN ====== -->
-
 <div class="screen" id="screen-settings">
 <div class="screen-inner scroll-content">
   <div style="padding-top:24px">
@@ -538,7 +530,6 @@ overflow-y: auto;
 </div>
 
 <!-- ====== ONBOARDING SCREEN ====== -->
-
 <div class="screen" id="screen-onboarding">
 <div class="screen-inner scroll-content">
   <div class="flex-1 flex-col justify-center" id="onb-content"></div>
@@ -546,14 +537,12 @@ overflow-y: auto;
 </div>
 
 <!-- ====== INSTALL BANNER ====== -->
-
 <div class="banner hidden" id="install-banner">
   <span class="flex-1">To install: tap Share → Add to Home Screen</span>
   <button class="banner-close" onclick="dismissBanner()">&times;</button>
 </div>
 
 <!-- ====== STORAGE WARNING ====== -->
-
 <div class="banner hidden" id="storage-banner">
   <span class="flex-1">Storage unavailable — your data won't be saved. Open FogCheck in regular Safari.</span>
   <button class="banner-close" onclick="this.parentElement.classList.add('hidden')">&times;</button>
@@ -1464,392 +1453,415 @@ function startOnboarding() {
         <p class="label">Getting set up · ${step + 1} of ${steps.length}</p>
         <p style="font-size:20px;line-height:1.6;max-width:360px">${s.text}</p>
         ${s.input ? `<textarea id="onb-input" rows="3" placeholder="${s.optional ? 'Optional…' : 'Type here…'}" style="max-width:360px"></textarea>` : ''}
-        
-    <div style="display:flex;gap:12px">
-      <button class="btn btn-primary" onclick="window._onbNext()">${step === steps.length - 1 ? 'Finish' : 'Next'}</button>
-      <button class="btn btn-secondary" onclick="window._onbSkip()" style="font-size:14px">Skip all</button>
-    </div>
-  </div>
-\`;
+        <div style="display:flex;gap:12px">
+          <button class="btn btn-primary" onclick="window._onbNext()">${step === steps.length - 1 ? 'Finish' : 'Next'}</button>
+          <button class="btn btn-secondary" onclick="window._onbSkip()" style="font-size:14px">Skip all</button>
+        </div>
+      </div>
+    `;
+  }
 
-}
+  window._onbNext = function() {
+    const s = steps[step];
+    if (s.input) {
+      const val = document.getElementById('onb-input').value.trim();
+      if (val) APP.onboarding[s.key] = val;
+    }
+    step++;
+    if (step >= steps.length) {
+      APP.onboarding.completed = true;
+      saveData(APP);
+      showScreen('home');
+    } else {
+      renderStep();
+    }
+  };
 
-window._onbNext = function() {
-const s = steps[step];
-if (s.input) {
-const val = document.getElementById('onb-input').value.trim();
-if (val) APP.onboarding[s.key] = val;
-}
-step++;
-if (step >= steps.length) {
-APP.onboarding.completed = true;
-saveData(APP);
-showScreen('home');
-} else {
-renderStep();
-}
-};
+  window._onbSkip = function() {
+    APP.onboarding.completed = true;
+    saveData(APP);
+    showScreen('home');
+  };
 
-window._onbSkip = function() {
-APP.onboarding.completed = true;
-saveData(APP);
-showScreen('home');
-};
-
-showScreen('onboarding');
-renderStep();
+  showScreen('onboarding');
+  renderStep();
 }
 
 // ============================================================
 // TRENDS
 // ============================================================
 function updateTrends() {
-if (APP.sessions.length === 0) {
-document.getElementById('trends-empty').classList.remove('hidden');
-document.getElementById('trends-content').classList.add('hidden');
-return;
-}
-document.getElementById('trends-empty').classList.add('hidden');
-document.getElementById('trends-content').classList.remove('hidden');
+  if (APP.sessions.length === 0) {
+    document.getElementById('trends-empty').classList.remove('hidden');
+    document.getElementById('trends-content').classList.add('hidden');
+    return;
+  }
+  document.getElementById('trends-empty').classList.add('hidden');
+  document.getElementById('trends-content').classList.remove('hidden');
 
-// Last 30 days of sessions
-const now = Date.now();
-const thirtyDays = 30 * 24 * 60 * 60 * 1000;
-const recent = APP.sessions.filter(s => (now - new Date(s.date).getTime()) < thirtyDays);
+  // Last 30 days of sessions
+  const now = Date.now();
+  const thirtyDays = 30 * 24 * 60 * 60 * 1000;
+  const recent = APP.sessions.filter(s => (now - new Date(s.date).getTime()) < thirtyDays);
 
-drawChart(recent);
-drawDistribution(recent);
-drawInsights(recent);
-drawStreak();
+  drawChart(recent);
+  drawDistribution(recent);
+  drawInsights(recent);
+  drawStreak();
 }
 
 function drawChart(sessions) {
-const canvas = document.getElementById('trendChart');
-const ctx = canvas.getContext('2d');
-const dpr = window.devicePixelRatio || 1;
-const rect = canvas.getBoundingClientRect();
-canvas.width = rect.width * dpr;
-canvas.height = 200 * dpr;
-ctx.scale(dpr, dpr);
-const W = rect.width;
-const H = 200;
+  const canvas = document.getElementById('trendChart');
+  const ctx = canvas.getContext('2d');
+  const dpr = window.devicePixelRatio || 1;
+  const rect = canvas.getBoundingClientRect();
+  canvas.width = rect.width * dpr;
+  canvas.height = 200 * dpr;
+  ctx.scale(dpr, dpr);
+  const W = rect.width;
+  const H = 200;
 
-ctx.fillStyle = '#161b22';
-ctx.beginPath();
-ctx.roundRect(0, 0, W, H, 12);
-ctx.fill();
+  ctx.fillStyle = '#161b22';
+  ctx.beginPath();
+  ctx.roundRect(0, 0, W, H, 12);
+  ctx.fill();
 
-if (sessions.length < 2) {
-ctx.fillStyle = '#5a6068';
-ctx.font = '14px DM Sans, sans-serif';
-ctx.textAlign = 'center';
-ctx.fillText('More data needed for chart', W/2, H/2);
-return;
-}
+  if (sessions.length < 2) {
+    ctx.fillStyle = '#5a6068';
+    ctx.font = '14px DM Sans, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('More data needed for chart', W/2, H/2);
+    return;
+  }
 
-const pad = { top: 20, right: 16, bottom: 30, left: 40 };
-const scores = sessions.map(s => s.scores.total);
-const maxS = Math.max(…scores, 100);
-const minS = Math.min(…scores, 0);
+  const pad = { top: 20, right: 16, bottom: 30, left: 40 };
+  const scores = sessions.map(s => s.scores.total);
+  const maxS = Math.max(...scores, 100);
+  const minS = Math.min(...scores, 0);
 
-const xStep = (W - pad.left - pad.right) / (scores.length - 1);
+  const xStep = (W - pad.left - pad.right) / (scores.length - 1);
 
-// Grid lines
-ctx.strokeStyle = '#21262d';
-ctx.lineWidth = 1;
-for (let v = 0; v <= 100; v += 25) {
-const y = pad.top + (1 - v / 100) * (H - pad.top - pad.bottom);
-ctx.beginPath();
-ctx.moveTo(pad.left, y);
-ctx.lineTo(W - pad.right, y);
-ctx.stroke();
-ctx.fillStyle = '#5a6068';
-ctx.font = '11px DM Sans, sans-serif';
-ctx.textAlign = 'right';
-ctx.fillText(v, pad.left - 6, y + 4);
-}
+  // Grid lines
+  ctx.strokeStyle = '#21262d';
+  ctx.lineWidth = 1;
+  for (let v = 0; v <= 100; v += 25) {
+    const y = pad.top + (1 - v / 100) * (H - pad.top - pad.bottom);
+    ctx.beginPath();
+    ctx.moveTo(pad.left, y);
+    ctx.lineTo(W - pad.right, y);
+    ctx.stroke();
+    ctx.fillStyle = '#5a6068';
+    ctx.font = '11px DM Sans, sans-serif';
+    ctx.textAlign = 'right';
+    ctx.fillText(v, pad.left - 6, y + 4);
+  }
 
-// Line
-ctx.beginPath();
-ctx.strokeStyle = '#4a9b8e';
-ctx.lineWidth = 2;
-ctx.lineJoin = 'round';
-scores.forEach((s, i) => {
-const x = pad.left + i * xStep;
-const y = pad.top + (1 - s / 100) * (H - pad.top - pad.bottom);
-if (i === 0) ctx.moveTo(x, y);
-else ctx.lineTo(x, y);
-});
-ctx.stroke();
+  // Line
+  ctx.beginPath();
+  ctx.strokeStyle = '#4a9b8e';
+  ctx.lineWidth = 2;
+  ctx.lineJoin = 'round';
+  scores.forEach((s, i) => {
+    const x = pad.left + i * xStep;
+    const y = pad.top + (1 - s / 100) * (H - pad.top - pad.bottom);
+    if (i === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  });
+  ctx.stroke();
 
-// Dots with day type colors
-const dayColors = { CLEAR: '#2d6a4f', MANAGED: '#e9a11a', FOG: '#d4622a', REST: '#8b1a1a' };
-sessions.forEach((s, i) => {
-const x = pad.left + i * xStep;
-const y = pad.top + (1 - s.scores.total / 100) * (H - pad.top - pad.bottom);
-ctx.beginPath();
-ctx.arc(x, y, 4, 0, Math.PI * 2);
-ctx.fillStyle = dayColors[s.dayType] || '#4a9b8e';
-ctx.fill();
-});
+  // Dots with day type colors
+  const dayColors = { CLEAR: '#2d6a4f', MANAGED: '#e9a11a', FOG: '#d4622a', REST: '#8b1a1a' };
+  sessions.forEach((s, i) => {
+    const x = pad.left + i * xStep;
+    const y = pad.top + (1 - s.scores.total / 100) * (H - pad.top - pad.bottom);
+    ctx.beginPath();
+    ctx.arc(x, y, 4, 0, Math.PI * 2);
+    ctx.fillStyle = dayColors[s.dayType] || '#4a9b8e';
+    ctx.fill();
+  });
 }
 
 function drawDistribution(sessions) {
-const counts = { CLEAR: 0, MANAGED: 0, FOG: 0, REST: 0 };
-sessions.forEach(s => counts[s.dayType]++);
-const total = sessions.length || 1;
-const colors = { CLEAR: 'var(--clear)', MANAGED: 'var(--managed)', FOG: 'var(--fog)', REST: 'var(--rest)' };
-const labels = { CLEAR: 'Clear', MANAGED: 'Managed', FOG: 'Fog', REST: 'Rest' };
+  const counts = { CLEAR: 0, MANAGED: 0, FOG: 0, REST: 0 };
+  sessions.forEach(s => counts[s.dayType]++);
+  const total = sessions.length || 1;
+  const colors = { CLEAR: 'var(--clear)', MANAGED: 'var(--managed)', FOG: 'var(--fog)', REST: 'var(--rest)' };
+  const labels = { CLEAR: 'Clear', MANAGED: 'Managed', FOG: 'Fog', REST: 'Rest' };
 
-const el = document.getElementById('day-distribution');
-el.innerHTML = Object.keys(counts).map(k => `<div style="display:flex;align-items:center;gap:12px"> <span style="width:70px;font-size:13px;color:var(--text-dim)">${labels[k]}: ${counts[k]}</span> <div style="flex:1;height:8px;background:var(--bg-elevated);border-radius:4px;overflow:hidden"> <div style="width:${(counts[k] / total) * 100}%;height:100%;background:${colors[k]};border-radius:4px;transition:width 400ms"></div> </div> </div>`).join('');
+  const el = document.getElementById('day-distribution');
+  el.innerHTML = Object.keys(counts).map(k => `
+    <div style="display:flex;align-items:center;gap:12px">
+      <span style="width:70px;font-size:13px;color:var(--text-dim)">${labels[k]}: ${counts[k]}</span>
+      <div style="flex:1;height:8px;background:var(--bg-elevated);border-radius:4px;overflow:hidden">
+        <div style="width:${(counts[k] / total) * 100}%;height:100%;background:${colors[k]};border-radius:4px;transition:width 400ms"></div>
+      </div>
+    </div>
+  `).join('');
 }
 
 function drawInsights(sessions) {
-const el = document.getElementById('trends-insights');
-if (sessions.length < 3) {
-el.innerHTML = '<p style="color:var(--text-dim);font-size:14px">Need more data for insights.</p>';
-return;
-}
+  const el = document.getElementById('trends-insights');
+  if (sessions.length < 3) {
+    el.innerHTML = '<p style="color:var(--text-dim);font-size:14px">Need more data for insights.</p>';
+    return;
+  }
 
-// Pain correlation
-const withPain = sessions.filter(s => s.symptoms && s.symptoms.pain);
-let insight = '';
-if (withPain.length >= 3) {
-const highPain = withPain.filter(s => s.symptoms.pain >= 4);
-const lowPain = withPain.filter(s => s.symptoms.pain <= 2);
-if (highPain.length > 0 && lowPain.length > 0) {
-const avgHigh = highPain.reduce((a, s) => a + s.scores.total, 0) / highPain.length;
-const avgLow = lowPain.reduce((a, s) => a + s.scores.total, 0) / lowPain.length;
-const diff = Math.round(avgLow - avgHigh);
-if (diff > 5) {
-insight = `High pain days score ~${diff} points lower on average. Pain and cognition appear linked for you.`;
-} else {
-insight = 'Pain levels don't show a strong correlation with cognitive scores yet.';
-}
-} else {
-insight = 'Not enough variation in pain levels to detect patterns yet.';
-}
-} else {
-insight = 'Collecting more data to find patterns.';
-}
+  // Pain correlation
+  const withPain = sessions.filter(s => s.symptoms && s.symptoms.pain);
+  let insight = '';
+  if (withPain.length >= 3) {
+    const highPain = withPain.filter(s => s.symptoms.pain >= 4);
+    const lowPain = withPain.filter(s => s.symptoms.pain <= 2);
+    if (highPain.length > 0 && lowPain.length > 0) {
+      const avgHigh = highPain.reduce((a, s) => a + s.scores.total, 0) / highPain.length;
+      const avgLow = lowPain.reduce((a, s) => a + s.scores.total, 0) / lowPain.length;
+      const diff = Math.round(avgLow - avgHigh);
+      if (diff > 5) {
+        insight = `High pain days score ~${diff} points lower on average. Pain and cognition appear linked for you.`;
+      } else {
+        insight = 'Pain levels don\'t show a strong correlation with cognitive scores yet.';
+      }
+    } else {
+      insight = 'Not enough variation in pain levels to detect patterns yet.';
+    }
+  } else {
+    insight = 'Collecting more data to find patterns.';
+  }
 
-el.innerHTML = `<p style="font-size:14px;line-height:1.6">${insight}</p>`;
+  el.innerHTML = `<p style="font-size:14px;line-height:1.6">${insight}</p>`;
 }
 
 function drawStreak() {
-const el = document.getElementById('trends-streak');
-const sessions = APP.sessions;
-if (sessions.length === 0) {
-el.innerHTML = '<p style="font-size:14px;color:var(--text-dim)">No sessions yet.</p>';
-return;
-}
+  const el = document.getElementById('trends-streak');
+  const sessions = APP.sessions;
+  if (sessions.length === 0) {
+    el.innerHTML = '<p style="font-size:14px;color:var(--text-dim)">No sessions yet.</p>';
+    return;
+  }
 
-// Count consecutive days
-let streak = 1;
-const today = new Date().toDateString();
-const lastDate = new Date(sessions[sessions.length - 1].date).toDateString();
+  // Count consecutive days
+  let streak = 1;
+  const today = new Date().toDateString();
+  const lastDate = new Date(sessions[sessions.length - 1].date).toDateString();
 
-if (lastDate === today || lastDate === new Date(Date.now() - 86400000).toDateString()) {
-for (let i = sessions.length - 1; i > 0; i--) {
-const d1 = new Date(sessions[i].date).toDateString();
-const d2 = new Date(sessions[i-1].date).toDateString();
-const diff = (new Date(d1) - new Date(d2)) / 86400000;
-if (diff <= 1 && d1 !== d2) streak++;
-else if (d1 === d2) continue;
-else break;
-}
-} else {
-streak = 0;
-}
+  if (lastDate === today || lastDate === new Date(Date.now() - 86400000).toDateString()) {
+    for (let i = sessions.length - 1; i > 0; i--) {
+      const d1 = new Date(sessions[i].date).toDateString();
+      const d2 = new Date(sessions[i-1].date).toDateString();
+      const diff = (new Date(d1) - new Date(d2)) / 86400000;
+      if (diff <= 1 && d1 !== d2) streak++;
+      else if (d1 === d2) continue;
+      else break;
+    }
+  } else {
+    streak = 0;
+  }
 
-el.innerHTML = `<p style="font-size:14px">${streak > 0 ? `You've logged <strong>${streak}</strong> day${streak !== 1 ? 's' : ''} in a row.` : 'Log today to start a streak.'}</p>`;
+  el.innerHTML = `<p style="font-size:14px">${streak > 0 ? `You've logged <strong>${streak}</strong> day${streak !== 1 ? 's' : ''} in a row.` : 'Log today to start a streak.'}</p>`;
 }
 
 // ============================================================
 // EXPORT
 // ============================================================
 function showExport() {
-const sessions = APP.sessions;
-const now = new Date();
-const thirtyDaysAgo = new Date(now - 30 * 86400000);
+  const sessions = APP.sessions;
+  const now = new Date();
+  const thirtyDaysAgo = new Date(now - 30 * 86400000);
 
-let text = `FogCheck Summary\n`;
-text += `Generated: ${now.toLocaleDateString()}\n\n`;
-text += `ASSESSMENT HISTORY:\n`;
+  let text = `FogCheck Summary\n`;
+  text += `Generated: ${now.toLocaleDateString()}\n\n`;
+  text += `ASSESSMENT HISTORY:\n`;
 
-sessions.forEach(s => {
-const d = new Date(s.date).toLocaleDateString();
-const bl = s.scores.percentageOfBaseline ? ` | Baseline: ${s.scores.percentageOfBaseline}%` : '';
-text += `${d} | ${s.dayType} | Score: ${s.scores.total}${bl}\n`;
-});
+  sessions.forEach(s => {
+    const d = new Date(s.date).toLocaleDateString();
+    const bl = s.scores.percentageOfBaseline ? ` | Baseline: ${s.scores.percentageOfBaseline}%` : '';
+    text += `${d} | ${s.dayType} | Score: ${s.scores.total}${bl}\n`;
+  });
 
-// Symptom averages
-const recent = sessions.filter(s => new Date(s.date) >= thirtyDaysAgo && s.symptoms);
-if (recent.length > 0) {
-const avg = (key) => (recent.reduce((a, s) => a + (s.symptoms[key] || 0), 0) / recent.length).toFixed(1);
-text += `\nSYMPTOM AVERAGES (last 30 days):\n`;
-text += `Fog: ${avg('fog')}/5 | Energy: ${avg('energy')}/5 | Pain: ${avg('pain')}/5 | Sleep: ${avg('sleep')}/5\n`;
-}
+  // Symptom averages
+  const recent = sessions.filter(s => new Date(s.date) >= thirtyDaysAgo && s.symptoms);
+  if (recent.length > 0) {
+    const avg = (key) => (recent.reduce((a, s) => a + (s.symptoms[key] || 0), 0) / recent.length).toFixed(1);
+    text += `\nSYMPTOM AVERAGES (last 30 days):\n`;
+    text += `Fog: ${avg('fog')}/5 | Energy: ${avg('energy')}/5 | Pain: ${avg('pain')}/5 | Sleep: ${avg('sleep')}/5\n`;
+  }
 
-// Notes
-const withNotes = sessions.filter(s => s.note);
-if (withNotes.length > 0) {
-text += `\nNOTES:\n`;
-withNotes.forEach(s => {
-text += `${new Date(s.date).toLocaleDateString()}: ${s.note}\n`;
-});
-}
+  // Notes
+  const withNotes = sessions.filter(s => s.note);
+  if (withNotes.length > 0) {
+    text += `\nNOTES:\n`;
+    withNotes.forEach(s => {
+      text += `${new Date(s.date).toLocaleDateString()}: ${s.note}\n`;
+    });
+  }
 
-document.getElementById('export-text').textContent = text;
-showScreen('export');
+  document.getElementById('export-text').textContent = text;
+  showScreen('export');
 }
 
 function copyExport() {
-const text = document.getElementById('export-text').textContent;
-navigator.clipboard.writeText(text).then(() => {
-const confirm = document.getElementById('copy-confirm');
-confirm.classList.remove('hidden');
-setTimeout(() => confirm.classList.add('hidden'), 2000);
-}).catch(() => {
-// Fallback
-const ta = document.createElement('textarea');
-ta.value = text;
-document.body.appendChild(ta);
-ta.select();
-document.execCommand('copy');
-document.body.removeChild(ta);
-const confirm = document.getElementById('copy-confirm');
-confirm.classList.remove('hidden');
-setTimeout(() => confirm.classList.add('hidden'), 2000);
-});
+  const text = document.getElementById('export-text').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const confirm = document.getElementById('copy-confirm');
+    confirm.classList.remove('hidden');
+    setTimeout(() => confirm.classList.add('hidden'), 2000);
+  }).catch(() => {
+    // Fallback
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    const confirm = document.getElementById('copy-confirm');
+    confirm.classList.remove('hidden');
+    setTimeout(() => confirm.classList.add('hidden'), 2000);
+  });
 }
 
 // ============================================================
 // SETTINGS
 // ============================================================
 function updateSettings() {
-document.getElementById('settings-name').value = APP.settings.userName || '';
-document.getElementById('settings-clear').value = APP.onboarding.guidance_clear_leadership || '';
-document.getElementById('settings-fog').value = APP.onboarding.guidance_fog_warning || '';
-document.getElementById('settings-rest').value = APP.onboarding.guidance_rest_contact || '';
-document.getElementById('settings-custom').value = APP.onboarding.guidance_custom_tracking || '';
+  document.getElementById('settings-name').value = APP.settings.userName || '';
+  document.getElementById('settings-clear').value = APP.onboarding.guidance_clear_leadership || '';
+  document.getElementById('settings-fog').value = APP.onboarding.guidance_fog_warning || '';
+  document.getElementById('settings-rest').value = APP.onboarding.guidance_rest_contact || '';
+  document.getElementById('settings-custom').value = APP.onboarding.guidance_custom_tracking || '';
 }
 
 function saveSetting(key, value) {
-APP.settings[key] = value;
-saveData(APP);
+  APP.settings[key] = value;
+  saveData(APP);
 }
 
 function saveGuidance(key, value) {
-APP.onboarding[key] = value;
-saveData(APP);
+  APP.onboarding[key] = value;
+  saveData(APP);
 }
 
 function confirmClearData() {
-if (confirm('This will delete ALL your FogCheck data permanently. Are you sure?')) {
-if (confirm('Really? This cannot be undone.')) {
-APP = JSON.parse(JSON.stringify(DEFAULT_DATA));
-saveData(APP);
-showScreen('home');
-}
-}
+  if (confirm('This will delete ALL your FogCheck data permanently. Are you sure?')) {
+    if (confirm('Really? This cannot be undone.')) {
+      APP = JSON.parse(JSON.stringify(DEFAULT_DATA));
+      saveData(APP);
+      showScreen('home');
+    }
+  }
 }
 
 // ============================================================
 // INSTALL BANNER
 // ============================================================
 function checkInstallBanner() {
-if (APP.installBannerDismissed) return;
-const isStandalone = window.navigator.standalone || window.matchMedia('(display-mode: standalone)').matches;
-if (!isStandalone) {
-document.getElementById('install-banner').classList.remove('hidden');
-}
+  if (APP.installBannerDismissed) return;
+  const isStandalone = window.navigator.standalone || window.matchMedia('(display-mode: standalone)').matches;
+  if (!isStandalone) {
+    document.getElementById('install-banner').classList.remove('hidden');
+  }
 }
 
 function dismissBanner() {
-document.getElementById('install-banner').classList.add('hidden');
-APP.installBannerDismissed = true;
-saveData(APP);
+  document.getElementById('install-banner').classList.add('hidden');
+  APP.installBannerDismissed = true;
+  saveData(APP);
 }
 
 // ============================================================
 // PWA — SERVICE WORKER
 // ============================================================
 function registerSW() {
-if ('serviceWorker' in navigator) {
-const swCode = `const CACHE = 'fogcheck-v1'; self.addEventListener('install', e => { e.waitUntil( caches.open(CACHE).then(cache => cache.addAll(['/'])) ); self.skipWaiting(); }); self.addEventListener('fetch', e => { e.respondWith( caches.match(e.request).then(r => r || fetch(e.request).catch(() => caches.match('/'))) ); }); self.addEventListener('activate', e => { e.waitUntil( caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))) ); self.clients.claim(); });`;
-const blob = new Blob([swCode], { type: 'application/javascript' });
-const swUrl = URL.createObjectURL(blob);
-navigator.serviceWorker.register(swUrl).catch(() => {});
-}
+  if ('serviceWorker' in navigator) {
+    const swCode = `
+      const CACHE = 'fogcheck-v1';
+      self.addEventListener('install', e => {
+        e.waitUntil(
+          caches.open(CACHE).then(cache => cache.addAll(['/']))
+        );
+        self.skipWaiting();
+      });
+      self.addEventListener('fetch', e => {
+        e.respondWith(
+          caches.match(e.request).then(r => r || fetch(e.request).catch(() => caches.match('/')))
+        );
+      });
+      self.addEventListener('activate', e => {
+        e.waitUntil(
+          caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k))))
+        );
+        self.clients.claim();
+      });
+    `;
+    const blob = new Blob([swCode], { type: 'application/javascript' });
+    const swUrl = URL.createObjectURL(blob);
+    navigator.serviceWorker.register(swUrl).catch(() => {});
+  }
 }
 
 // ============================================================
 // PWA — MANIFEST
 // ============================================================
 function injectManifest() {
-const manifest = {
-name: 'FogCheck',
-short_name: 'FogCheck',
-start_url: '.',
-display: 'standalone',
-background_color: '#0d1117',
-theme_color: '#0d1117',
-icons: [{
-src: 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="128" fill="#0d1117"/><circle cx="256" cy="240" r="100" fill="none" stroke="#4a9b8e" stroke-width="16"/><path d="M256 140v100l60 60" fill="none" stroke="#4a9b8e" stroke-width="16" stroke-linecap="round"/><rect x="176" y="380" width="160" height="16" rx="8" fill="#4a9b8e" opacity="0.5"/><rect x="206" y="410" width="100" height="12" rx="6" fill="#4a9b8e" opacity="0.3"/></svg>'),
-sizes: '512x512',
-type: 'image/svg+xml'
-}]
-};
-const link = document.createElement('link');
-link.rel = 'manifest';
-link.href = 'data:application/json,' + encodeURIComponent(JSON.stringify(manifest));
-document.head.appendChild(link);
+  const manifest = {
+    name: 'FogCheck',
+    short_name: 'FogCheck',
+    start_url: '.',
+    display: 'standalone',
+    background_color: '#0d1117',
+    theme_color: '#0d1117',
+    icons: [{
+      src: 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="128" fill="#0d1117"/><circle cx="256" cy="240" r="100" fill="none" stroke="#4a9b8e" stroke-width="16"/><path d="M256 140v100l60 60" fill="none" stroke="#4a9b8e" stroke-width="16" stroke-linecap="round"/><rect x="176" y="380" width="160" height="16" rx="8" fill="#4a9b8e" opacity="0.5"/><rect x="206" y="410" width="100" height="12" rx="6" fill="#4a9b8e" opacity="0.3"/></svg>'),
+      sizes: '512x512',
+      type: 'image/svg+xml'
+    }]
+  };
+  const link = document.createElement('link');
+  link.rel = 'manifest';
+  link.href = 'data:application/json,' + encodeURIComponent(JSON.stringify(manifest));
+  document.head.appendChild(link);
 
-// iOS icon
-const appleIcon = document.createElement('link');
-appleIcon.rel = 'apple-touch-icon';
-appleIcon.href = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="128" fill="#0d1117"/><circle cx="256" cy="240" r="100" fill="none" stroke="#4a9b8e" stroke-width="16"/><path d="M256 140v100l60 60" fill="none" stroke="#4a9b8e" stroke-width="16" stroke-linecap="round"/></svg>');
-document.head.appendChild(appleIcon);
+  // iOS icon
+  const appleIcon = document.createElement('link');
+  appleIcon.rel = 'apple-touch-icon';
+  appleIcon.href = 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="128" fill="#0d1117"/><circle cx="256" cy="240" r="100" fill="none" stroke="#4a9b8e" stroke-width="16"/><path d="M256 140v100l60 60" fill="none" stroke="#4a9b8e" stroke-width="16" stroke-linecap="round"/></svg>');
+  document.head.appendChild(appleIcon);
 }
 
 // ============================================================
 // INIT
 // ============================================================
 function init() {
-storageAvailable = testStorage();
-if (!storageAvailable) {
-document.getElementById('storage-banner').classList.remove('hidden');
-}
+  storageAvailable = testStorage();
+  if (!storageAvailable) {
+    document.getElementById('storage-banner').classList.remove('hidden');
+  }
 
-APP = loadData();
-injectManifest();
-registerSW();
-showScreen('home');
-checkInstallBanner();
+  APP = loadData();
+  injectManifest();
+  registerSW();
+  updateHome();
+  checkInstallBanner();
 }
 
 // roundRect polyfill for older Safari
 if (!CanvasRenderingContext2D.prototype.roundRect) {
-CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
-if (typeof r === 'number') r = [r, r, r, r];
-this.moveTo(x + r[0], y);
-this.lineTo(x + w - r[1], y);
-this.quadraticCurveTo(x + w, y, x + w, y + r[1]);
-this.lineTo(x + w, y + h - r[2]);
-this.quadraticCurveTo(x + w, y + h, x + w - r[2], y + h);
-this.lineTo(x + r[3], y + h);
-this.quadraticCurveTo(x, y + h, x, y + h - r[3]);
-this.lineTo(x, y + r[0]);
-this.quadraticCurveTo(x, y, x + r[0], y);
-this.closePath();
-return this;
-};
+  CanvasRenderingContext2D.prototype.roundRect = function(x, y, w, h, r) {
+    if (typeof r === 'number') r = [r, r, r, r];
+    this.moveTo(x + r[0], y);
+    this.lineTo(x + w - r[1], y);
+    this.quadraticCurveTo(x + w, y, x + w, y + r[1]);
+    this.lineTo(x + w, y + h - r[2]);
+    this.quadraticCurveTo(x + w, y + h, x + w - r[2], y + h);
+    this.lineTo(x + r[3], y + h);
+    this.quadraticCurveTo(x, y + h, x, y + h - r[3]);
+    this.lineTo(x, y + r[0]);
+    this.quadraticCurveTo(x, y, x + r[0], y);
+    this.closePath();
+    return this;
+  };
 }
 
 init();
 </script>
-
 </body>
 </html>
