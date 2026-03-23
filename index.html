@@ -524,6 +524,13 @@ overflow-y: auto;
       <p class="label mb-16">Custom tracking notes</p>
       <textarea id="settings-custom" rows="2" placeholder="Medications, specific symptoms..." oninput="saveGuidance('guidance_custom_tracking', this.value)"></textarea>
     </div>
+    <div>
+      <p class="label mb-16">Notion sync</p>
+      <p style="font-size:13px;color:var(--text-dim);margin-bottom:12px">Paste a GitHub token with <strong style="color:var(--text)">gist</strong> scope to automatically log each check-in to your Notion Daily Log.</p>
+      <input type="password" id="settings-github-token" placeholder="ghp_xxxxxxxxxxxx" autocomplete="off" oninput="saveGithubToken(this.value)">
+      <p id="sync-config-status" style="font-size:12px;margin-top:8px;min-height:18px;color:var(--accent)"></p>
+    </div>
+
     <div class="card" style="border-color: var(--rest);">
       <p style="font-size:14px;color:var(--text-dim);margin-bottom:12px">Danger zone</p>
       <button class="btn btn-secondary w-full" style="color:var(--rest);border-color:var(--rest)" onclick="confirmClearData()">Clear All Data</button>
@@ -570,7 +577,7 @@ const DEFAULT_DATA = {
   sessions: [],
   baseline: { established: false, rollingAverage: null, sessionCount: 0 },
   onboarding: { completed: false, guidance_clear_leadership: '', guidance_fog_warning: '', guidance_rest_contact: '', guidance_custom_tracking: '' },
-  settings: { userName: '' },
+  settings: { userName: '', githubToken: '', gistId: '', lastSyncTime: null },
   installBannerDismissed: false
 };
 
@@ -1436,6 +1443,9 @@ function saveNoteAndFinish() {
 }
 
 function finishAssessment() {
+  if (APP.sessions.length > 0) {
+    syncToGist(APP.sessions[APP.sessions.length - 1]);
+  }
   if (!APP.onboarding.completed && APP.sessions.length === 1) {
     startOnboarding();
   } else {
@@ -1734,11 +1744,106 @@ document.getElementById('settings-clear').value = APP.onboarding.guidance_clear_
 document.getElementById('settings-fog').value = APP.onboarding.guidance_fog_warning || '';
 document.getElementById('settings-rest').value = APP.onboarding.guidance_rest_contact || '';
 document.getElementById('settings-custom').value = APP.onboarding.guidance_custom_tracking || '';
+const tokenEl = document.getElementById('settings-github-token');
+if (tokenEl) tokenEl.value = APP.settings.githubToken ? '••••••••••••••••' : '';
+const statusEl = document.getElementById('sync-config-status');
+if (statusEl) {
+  if (APP.settings.gistId) {
+    const last = APP.settings.lastSyncTime ? new Date(APP.settings.lastSyncTime).toLocaleString() : 'never';
+    statusEl.textContent = '✓ Connected · last sync: ' + last;
+  } else if (APP.settings.githubToken) {
+    statusEl.textContent = 'Token saved — will link on next check-in';
+  } else {
+    statusEl.textContent = '';
+  }
+}
 }
 
 function saveSetting(key, value) {
 APP.settings[key] = value;
 saveData(APP);
+}
+
+function saveGithubToken(value) {
+  const trimmed = value.trim();
+  // Don't overwrite with the masked placeholder
+  if (trimmed === '••••••••••••••••') return;
+  APP.settings.githubToken = trimmed;
+  APP.settings.gistId = ''; // reset gist link when token changes
+  APP.settings.lastSyncTime = null;
+  saveData(APP);
+  const statusEl = document.getElementById('sync-config-status');
+  if (statusEl) statusEl.textContent = trimmed ? 'Token saved — will link on next check-in' : '';
+}
+
+// ============================================================
+// NOTION SYNC via GitHub Gist
+// ============================================================
+async function syncToGist(session) {
+  const token = APP.settings.githubToken;
+  if (!token) return;
+
+  const payload = {
+    id: session.id,
+    date: session.date,
+    type: session.type,
+    dayType: session.dayType,
+    scores: session.scores,
+    symptoms: session.symptoms,
+    note: session.note || ''
+  };
+
+  try {
+    let gistId = APP.settings.gistId;
+
+    if (gistId) {
+      // Fetch existing gist and append
+      const getResp = await fetch('https://api.github.com/gists/' + gistId, {
+        headers: { 'Authorization': 'Bearer ' + token, 'Accept': 'application/vnd.github.v3+json' }
+      });
+      if (getResp.ok) {
+        const gist = await getResp.json();
+        const existing = JSON.parse(gist.files['fogcheck-sync.json'].content);
+        // Avoid duplicates
+        if (!existing.pending.find(s => s.id === payload.id)) {
+          existing.pending.push(payload);
+        } else {
+          // Update the existing entry (e.g. note was added)
+          const idx = existing.pending.findIndex(s => s.id === payload.id);
+          existing.pending[idx] = payload;
+        }
+        await fetch('https://api.github.com/gists/' + gistId, {
+          method: 'PATCH',
+          headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json', 'Accept': 'application/vnd.github.v3+json' },
+          body: JSON.stringify({ files: { 'fogcheck-sync.json': { content: JSON.stringify(existing, null, 2) } } })
+        });
+        APP.settings.lastSyncTime = new Date().toISOString();
+        saveData(APP);
+        return;
+      }
+    }
+
+    // Create new gist
+    const createResp = await fetch('https://api.github.com/gists', {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json', 'Accept': 'application/vnd.github.v3+json' },
+      body: JSON.stringify({
+        description: 'FogCheck \u2192 Notion sync queue',
+        public: false,
+        files: { 'fogcheck-sync.json': { content: JSON.stringify({ pending: [payload] }, null, 2) } }
+      })
+    });
+
+    if (createResp.ok) {
+      const newGist = await createResp.json();
+      APP.settings.gistId = newGist.id;
+      APP.settings.lastSyncTime = new Date().toISOString();
+      saveData(APP);
+    }
+  } catch(e) {
+    // Silent fail — data is safe in localStorage
+    console.warn('FogCheck sync failed:', e.message);
+  }
 }
 
 function saveGuidance(key, value) {
