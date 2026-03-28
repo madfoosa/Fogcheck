@@ -432,6 +432,9 @@ overflow-y: auto;
   <div class="result-reveal mt-16 mb-24" id="res-done-btn">
     <button class="btn btn-primary w-full" onclick="finishAssessment()">Done</button>
   </div>
+  <div class="result-reveal mt-8 mb-24" id="res-sync-btn">
+    <button class="btn btn-secondary w-full" onclick="syncToCognitiveWeb()" style="font-size:15px;color:var(--text-dim)">Save Score to Cognitive Web</button>
+  </div>
   <div id="res-cal-note" class="text-center hidden" style="padding-bottom:16px">
     <p style="font-size:13px;color:var(--text-dim)">Day <span id="res-cal-count"></span> of 14 — still learning your baseline</p>
   </div>
@@ -656,6 +659,7 @@ let testIndex = 0;
 let sessionScores = {};
 let sessionSymptoms = {};
 let lastVerbalCategory = '';
+let latestFogCheckResult = null; // holds latest score for Cognitive Web sync
 
 const VERBAL_CATEGORIES = [
   'Animals','Fruits','Kitchen items','Things in a garden','Clothing',
@@ -1359,6 +1363,14 @@ function finishTests() {
 function showResult(session) {
   showScreen('result');
 
+  // Store for Cognitive Web sync button
+  latestFogCheckResult = {
+    fogcheck: session.scores.total,
+    day_type: session.dayType,
+    baseline_pct: session.scores.percentageOfBaseline,
+    timestamp: session.date
+  };
+
   const dayColors = { CLEAR: 'var(--clear)', MANAGED: 'var(--managed)', FOG: 'var(--fog)', REST: 'var(--rest)' };
   const dayLabels = { CLEAR: 'Clear Day', MANAGED: 'Managed Day', FOG: 'Fog Day', REST: 'Rest Day' };
 
@@ -1412,6 +1424,7 @@ function showResult(session) {
   setTimeout(() => reveals[3] && reveals[3].classList.add('visible'), 1500);
   setTimeout(() => reveals[4] && reveals[4].classList.add('visible'), 1800);
   setTimeout(() => reveals[5] && reveals[5].classList.add('visible'), 2100);
+  setTimeout(() => reveals[6] && reveals[6].classList.add('visible'), 2400);
 }
 
 function getGuidanceText(dayType) {
@@ -1451,6 +1464,15 @@ function finishAssessment() {
   } else {
     showScreen('home');
   }
+}
+
+// ============================================================
+// COGNITIVE WEB INTEGRATION
+// ============================================================
+function syncToCognitiveWeb() {
+  if (!latestFogCheckResult) return;
+  const payload = encodeURIComponent(JSON.stringify(latestFogCheckResult));
+  window.location.href = 'shortcuts://run-shortcut?name=SaveFogScore&input=' + payload;
 }
 
 // ============================================================
